@@ -1,0 +1,18 @@
+---
+kodi_package_state: present
+kodi_repository: ppa:team-xbmc/ppa
+kodi_home: /var/lib/kodi
+kodi_dependencies:
+  - software-properties-common
+  - xinit
+  - xserver-xorg
+  - libdvdnav4
+  - libdvdread4
+  - gstreamer1.0-plugins-bad
+  - gstreamer1.0-plugins-ugly
+  - libdvd-pkg
+  - alsa-base
+  - pulseaudio
+kodi_dependencies_state: present
+kodi_addons: []
+  # - https://github.com/kodibae/repository.kodibae/raw/master/repository.kodibae/repository.kodibae-3.0.0.zip

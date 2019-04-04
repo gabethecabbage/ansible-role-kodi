@@ -1,0 +1,54 @@
+---
+- name: install dependencies
+  apt:
+    name: "{{ kodi_dependencies }}"
+    update_cache: yes
+    state: "{{ kodi_dependencies_state }}"
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+
+- name: add kodi repository
+  apt_repository:
+    repo: "{{ kodi_repository }}"
+    update_cache: no
+
+- name: install kodi
+  apt:
+    name: kodi
+    update_cache: yes
+    state: "{{ kodi_package_state }}"
+
+- name: create kodi user
+  user:
+    name: kodi
+    home: "{{ kodi_home }}"
+    create_home: yes
+    uid: 420
+    groups: audio,video
+    shell: /usr/bin/nologin
+
+- name: create addons directory
+  file:
+    dest: "{{ kodi_home }}/addons"
+    state: directory
+    owner: kodi
+    group: kodi
+
+- name: download addons
+  get_url:
+    url: "{{ item }}"
+    dest: "{{ kodi_home }}/addons"
+    owner: kodi
+    group: kodi
+  loop: "{{ kodi_addons }}"
+
+- name: copy systemd service
+  copy:
+    src: lib/systemd/system/kodi.service
+    dest: /lib/systemd/system/kodi.service
+
+- name: start and enable kodi
+  systemd:
+    name: kodi
+    state: started
+    enabled: yes

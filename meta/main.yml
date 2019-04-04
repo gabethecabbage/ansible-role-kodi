@@ -1,0 +1,15 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: kodi
+  description: Install kodi media server
+  author: Dragomir Radovanovic
+  license: "license (GPLv3)"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+  min_ansible_version: 2.5
+  galaxy_tags:
+    - kodi
