@@ -42,9 +42,9 @@
     group: kodi
   loop: "{{ kodi_addons }}"
 
-- name: copy systemd service
+- name: copy systemd service file
   copy:
-    src: lib/systemd/system/kodi.service
+    src: kodi.service
     dest: /lib/systemd/system/kodi.service
 
 - name: start and enable kodi
