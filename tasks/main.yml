@@ -23,8 +23,8 @@
     name: kodi
     home: "{{ kodi_home }}"
     create_home: yes
-    uid: 420
-    groups: audio,video
+    uid: "{{ kodi_uid }}"
+    groups: "{{ kodi_groups }}"
     shell: /usr/bin/nologin
 
 - name: create addons directory

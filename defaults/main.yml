@@ -1,6 +1,10 @@
 ---
 state: present
 kodi_repository: ppa:team-xbmc/ppa
+kodi_uid: 420
+kodi_groups:
+  - audio
+  - video
 kodi_home: /var/lib/kodi
 kodi_apt_depends:
   - software-properties-common
