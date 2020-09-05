@@ -17,6 +17,7 @@
   apt_repository:
     repo: "{{ kodi_repository }}"
     update_cache: no
+  when: ansible_distribution == 'Ubuntu'
 
 - name: install kodi
   apt:

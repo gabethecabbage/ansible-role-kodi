@@ -1,6 +1,7 @@
 # Ansible role: Kodi
 
-Ansible role for installing Kodi media server on Ubuntu server 18.04
+Ansible role for installing Kodi media server
+Forked from dragomirr.kodi
 
 ## Requirements
 
@@ -12,9 +13,12 @@ None.
 
 ## Example playbook
 
-    - hosts: all
-      roles:
-        - { role: dragomirr.kodi, ansible_python_interpreter: /usr/bin/python3 }
+```
+- hosts: all
+  roles:
+    - role: gabethecabbage.kodi
+      ansible_python_interpreter: /usr/bin/python3
+```
 
 ## Licence
 
