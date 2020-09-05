@@ -7,6 +7,12 @@
   environment:
     DEBIAN_FRONTEND: noninteractive
 
+- name: install optional pip dependencies
+  pip:
+    name: "{{ kodi_pip_depends }}"
+    state: "{{ state }}"
+  when: kodi_pip_depends
+
 - name: add kodi repository
   apt_repository:
     repo: "{{ kodi_repository }}"
@@ -29,15 +35,16 @@
 
 - name: create addons directory
   file:
-    dest: "{{ kodi_home }}/addons"
+    dest: "{{ kodi_home }}/.kodi/addons"
     state: directory
     owner: kodi
     group: kodi
 
 - name: download addons
-  get_url:
-    url: "{{ item }}"
-    dest: "{{ kodi_home }}/addons"
+  unarchive:
+    src: "{{ item }}"
+    remote_src: yes
+    dest: "{{ kodi_home }}"
     owner: kodi
     group: kodi
   loop: "{{ kodi_addons }}"
