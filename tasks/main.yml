@@ -1,9 +1,9 @@
 ---
 - name: install dependencies
   apt:
-    name: "{{ kodi_dependencies }}"
+    name: "{{ kodi_apt_depends }}"
     update_cache: yes
-    state: "{{ kodi_dependencies_state }}"
+    state: "{{ state }}"
   environment:
     DEBIAN_FRONTEND: noninteractive
 
@@ -16,7 +16,7 @@
   apt:
     name: kodi
     update_cache: yes
-    state: "{{ kodi_package_state }}"
+    state: "{{ state }}"
 
 - name: create kodi user
   user:
