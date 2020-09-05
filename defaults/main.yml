@@ -19,3 +19,4 @@ kodi_apt_depends:
 kodi_pip_depends:
 kodi_addons: []
   # - https://github.com/kodibae/repository.kodibae/raw/master/repository.kodibae/repository.kodibae-3.0.0.zip
+kodi_on_boot: true
